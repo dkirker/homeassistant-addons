@@ -59,6 +59,8 @@ schema:
     linode_version: str?
     luadns_email: email?
     luadns_token: str?
+    namecom_username: str?
+    namecom_token: str?
     netcup_api_key: str?
     netcup_api_password: str?
     netcup_customer_id: str?
@@ -71,7 +73,7 @@ schema:
     propagation_seconds: int(60,3600)?
     provider: "list(dns-cloudflare|dns-cloudxns|dns-digitalocean|\
       dns-directadmin|dns-dnsimple|dns-dnsmadeeasy|dns-gehirn|\
-      dns-google|dns-linode|dns-luadns|dns-njalla|dns-nsone|dns-ovh|\
+      dns-google|dns-linode|dns-luadns|dns-namecom|dns-njalla|dns-nsone|dns-ovh|\
       dns-rfc2136|dns-route53|dns-sakuracloud|dns-netcup|dns-gandi|\
       dns-transip)?"
     rfc2136_algorithm: str?
