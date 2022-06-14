@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Start sshd service if enabled
+# Run letencrypt service if enabled
 # ==============================================================================
 CERT_DIR=/data/letsencrypt
 WORK_DIR=/data/workdir
@@ -21,7 +21,7 @@ if [ "${CHALLENGE}" == "dns" ]; then
 
     PROPAGATION_SECONDS=60
     if bashio::config.exists 'dns.propagation_seconds'; then
-        PROPAGATION_SECONDS="$(bashio::config 'dns.propagation_seconds')" 
+        PROPAGATION_SECONDS="$(bashio::config 'dns.propagation_seconds')"
     fi
     bashio::log.info "Use propagation seconds: ${PROPAGATION_SECONDS}"
 else
