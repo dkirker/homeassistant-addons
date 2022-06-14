@@ -73,8 +73,8 @@ schema:
     propagation_seconds: int(60,3600)?
     provider: "list(dns-cloudflare|dns-cloudxns|dns-digitalocean|\
       dns-directadmin|dns-dnsimple|dns-dnsmadeeasy|dns-gehirn|\
-      dns-google|dns-linode|dns-luadns|dns-namecom|dns-njalla|dns-nsone|dns-ovh|\
-      dns-rfc2136|dns-route53|dns-sakuracloud|dns-netcup|dns-gandi|\
+      dns-google|dns-linode|dns-luadns|dns-namecom|dns-njalla|dns-nsone|\
+      dns-ovh|dns-rfc2136|dns-route53|dns-sakuracloud|dns-netcup|dns-gandi|\
       dns-transip)?"
     rfc2136_algorithm: str?
     rfc2136_name: str?
