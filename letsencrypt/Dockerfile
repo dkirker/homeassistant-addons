@@ -48,9 +48,8 @@ RUN \
         certbot-dns-netcup==${CERTBOT_NETCUP_VERSION} \
         certbot-plugin-gandi==${CERTBOT_GANDI_VERSION} \
         certbot-dns-transip==${CERTBOT_DNS_TRANSIP_VERSION} \
+        certbot-dns-namecom==${CERTBOT_NAMECOM_VERSION} \
     && apk del .build-dependencies
-
-# certbot-dns-namecom==${CERTBOT_NAMECOM_VERSION} \
 
 # Copy data
 COPY rootfs /
