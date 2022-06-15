@@ -10,7 +10,8 @@ ARG \
     CERTBOT_NETCUP_VERSION \
     CERTBOT_NJALLA_VERSION \
     CERTBOT_GANDI_VERSION \
-    CERTBOT_DNS_TRANSIP_VERSION
+    CERTBOT_DNS_TRANSIP_VERSION \
+    CERTBOT_NAMECOM_VERSION
 
 RUN \
     set -x \
@@ -25,7 +26,7 @@ RUN \
         openssl-dev \
         cargo \
     && pip3 install --no-cache-dir --find-links \
-        "https://wheels.home-assistant.io/alpine-$(cut -d '.' -f 1-2 < /etc/alpine-release)/${BUILD_ARCH}/" \ 
+        "https://wheels.home-assistant.io/alpine-$(cut -d '.' -f 1-2 < /etc/alpine-release)/${BUILD_ARCH}/" \
         cryptography==${CRYPTOGRAPHY_VERSION} \
         certbot==${CERTBOT_VERSION} \
         certbot-dns-cloudflare==${CERTBOT_VERSION} \
@@ -48,6 +49,8 @@ RUN \
         certbot-plugin-gandi==${CERTBOT_GANDI_VERSION} \
         certbot-dns-transip==${CERTBOT_DNS_TRANSIP_VERSION} \
     && apk del .build-dependencies
+
+# certbot-dns-namecom==${CERTBOT_NAMECOM_VERSION} \
 
 # Copy data
 COPY rootfs /
