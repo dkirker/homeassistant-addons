@@ -26,6 +26,8 @@ echo -e "dns_desec_token = $(bashio::config 'dns.desec_token')\n" \
       "dns_linode_version = $(bashio::config 'dns.linode_version')\n" \
       "dns_luadns_email = $(bashio::config 'dns.luadns_email')\n" \
       "dns_luadns_token = $(bashio::config 'dns.luadns_token')\n" \
+      "dns_multi_provider = $(bashio::config 'dns.multi_provider')\n" \
+      "dns_multi_vars = $(bashio::config 'dns.multi_vars')\n" \
       "dns_namecheap_username = $(bashio::config 'dns.namecheap_username')\n" \
       "dns_namecheap_api_key = $(bashio::config 'dns.namecheap_api_key')\n" \
       "dns_netcup_customer_id = $(bashio::config 'dns.netcup_customer_id')\n" \
@@ -84,6 +86,10 @@ fi
 
 if bashio::config.exists 'dns.cloudns_sub_auth_user'; then
       echo -e "dns_cloudns_sub_auth_user = $(bashio::config 'dns.cloudns_sub_auth_user')\n" >> /data/dnsapikey
+fi
+
+if bashio::config.exists 'dns.multi_provider'; then
+      echo -e "dns_multi_provider = $(bashio::config 'dns.multi_provider')\n$(bashio::config 'dns.multi_vars')\n" >> /data/dnsapikey
 fi
 
 chmod 600 /data/dnsapikey
