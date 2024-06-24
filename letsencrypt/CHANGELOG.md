@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.23
+
+- Add certbot-dns-multi support
+
 ## 5.0.22
 
 - Add joker.com DNS challenge support
