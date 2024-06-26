@@ -89,7 +89,11 @@ if bashio::config.exists 'dns.cloudns_sub_auth_user'; then
 fi
 
 if bashio::config.exists 'dns.multi_provider'; then
-      echo -e "dns_multi_provider = $(bashio::config 'dns.multi_provider')\n$(bashio::config 'dns.multi_vars')\n" >> /data/dnsapikey
+      echo -e "dns_multi_provider = $(bashio::config 'dns.multi_provider')\n$(bashio::config 'dns.multi_vars')\n" > /data/dns-multi.ini
+
+      bashio::log.info "/data/dnsapikey:\n$(cat /data/dns-multi.ini)"
+
+      chmod 600 /data/dns-multi.ini
 fi
 
 chmod 600 /data/dnsapikey

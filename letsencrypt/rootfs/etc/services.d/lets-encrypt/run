@@ -17,6 +17,8 @@ DNS_PROVIDER=$(bashio::config 'dns.provider')
 ACME_SERVER=$(bashio::config 'acme_server')
 ACME_ROOT_CA=$(bashio::config 'acme_root_ca_cert')
 
+bashio::log.info "Version 1"
+
 if [ "${CHALLENGE}" == "dns" ]; then
     bashio::log.info "Selected DNS Provider: ${DNS_PROVIDER}"
 
@@ -215,6 +217,18 @@ elif [ "${CHALLENGE}" == "dns" ] && [ "${DNS_PROVIDER}" == "dns-websupport" ]; t
     bashio::config.require 'dns.websupport_identifier'
     bashio::config.require 'dns.websupport_secret_key'
     PROVIDER_ARGUMENTS+=("--authenticator" "${DNS_PROVIDER}" "--${DNS_PROVIDER}-credentials" "/data/dnsapikey" "--${DNS_PROVIDER}-propagation-seconds" "${PROPAGATION_SECONDS}")
+
+# Multi
+elif [ "${CHALLENGE}" == "dns" ] && [ "${DNS_PROVIDER}" == "dns-multi" ]; then
+    bashio::config.require 'dns.multi_provider'
+    bashio::config.require 'dns.multi_vars'
+    PROVIDER_ARGUMENTS+=("--authenticator" "${DNS_PROVIDER}" "--${DNS_PROVIDER}-credentials" "/data/dns-multi.ini")
+
+    echo -e "dns_multi_provider = $(bashio::config 'dns.multi_provider')\n$(bashio::config 'dns.multi_vars')\n" > /data/dns-multi.ini
+
+    bashio::log.info "/data/dnsapikey:\n$(cat /data/dns-multi.ini)"
+
+    chmod 600 /data/dns-multi.ini
 
 #All others
 else
